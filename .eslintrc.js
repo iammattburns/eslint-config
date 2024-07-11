@@ -99,17 +99,17 @@ module.exports = {
         allow: ["resolve", "reject", "done", "next", "err", "error"],
       },
     ],
-    quotes: [
-      2,
-      "single",
-      {
-        avoidEscape: true,
-        allowTemplateLiterals: true,
-      },
-    ],
     "prettier/prettier": [
       "error",
       {
+        semi: true,
+        trailingComma: "es5",
+        singleQuote: false,
+        arrowParens: "always",
+        proseWrap: "never",
+        tabWidth: 2,
+        useTabs: false,
+        printWidth: 80,
         endOfLine: "auto",
       },
     ],
