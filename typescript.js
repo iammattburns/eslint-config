@@ -82,7 +82,6 @@ module.exports = {
     "no-trailing-spaces": "error",
     "no-unneeded-ternary": "error",
     "no-whitespace-before-property": "error",
-    "object-curly-newline": "error",
     "semi-spacing": "error",
     "space-before-blocks": "error",
     "space-before-function-paren": [

@@ -2,7 +2,7 @@
 require("@rushstack/eslint-patch/modern-module-resolution");
 
 module.exports = {
-  extends: ["airbnb", "prettier"],
+  extends: ["prettier", "plugin:import/recommended"],
   parser: "@babel/eslint-parser",
   parserOptions: {
     requireConfigFile: false,
@@ -15,6 +15,14 @@ module.exports = {
     node: true,
     jquery: true,
     jest: true,
+  },
+  settings: {
+    "import/ignore": ["react-native"],
+    "import/resolver": {
+      node: {
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
+      },
+    },
   },
   rules: {
     "no-debugger": 0,
@@ -62,6 +70,7 @@ module.exports = {
     ],
     "no-console": 0,
     "import/prefer-default-export": 0,
+    "import/no-useless-path-segments": ["error"],
     import: 0,
     "func-names": 0,
     "space-before-function-paren": 0,
@@ -70,7 +79,6 @@ module.exports = {
     "import/extensions": 0,
     "no-underscore-dangle": 0,
     "consistent-return": 0,
-    "react/display-name": 1,
     "react/no-array-index-key": 0,
     "react/react-in-jsx-scope": 0,
     "react/prefer-stateless-function": 0,
@@ -78,19 +86,7 @@ module.exports = {
     "react/no-unescaped-entities": 0,
     "react/function-component-definition": 0,
     "jsx-a11y/accessible-emoji": 0,
-    "jsx-a11y/label-has-associated-control": [
-      "error",
-      {
-        assert: "either",
-      },
-    ],
     "react/require-default-props": 0,
-    "react/jsx-filename-extension": [
-      1,
-      {
-        extensions: [".js", ".jsx", ".ts", ".tsx", ".mdx"],
-      },
-    ],
     radix: 0,
     "no-shadow": [
       2,
@@ -114,16 +110,42 @@ module.exports = {
       },
     ],
     "jsx-a11y/href-no-hash": "off",
-    "jsx-a11y/anchor-is-valid": [
-      "warn",
-      {
-        aspects: ["invalidHref"],
-      },
-    ],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "@typescript-eslint/comma-dangle": ["off"],
     "react/jsx-props-no-spreading": "off",
+    "import/order": [
+      1,
+      {
+        groups: [
+          ["builtin", "external"],
+          ["internal", "parent", "sibling", "index"],
+        ],
+        pathGroups: [
+          {
+            pattern: "components",
+            group: "internal",
+            position: "before",
+          },
+          {
+            pattern: "common",
+            group: "internal",
+            position: "before",
+          },
+          {
+            pattern: "routes/**",
+            group: "internal",
+            position: "before",
+          },
+          {
+            pattern: "assets/**",
+            group: "internal",
+            position: "after",
+          },
+        ],
+        pathGroupsExcludedImportTypes: ["internal"],
+      },
+    ],
   },
   plugins: ["html", "prettier", "react-hooks"],
 };
