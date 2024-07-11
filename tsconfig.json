@@ -1,11 +1,23 @@
 {
-  "include": ["./**/*"],
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "Default",
   "compilerOptions": {
-    "module": "esnext",
-    "target": "esnext",
-    "moduleResolution": "node",
+    "target": "ES6",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "jsx": "react",
+    "module": "ESNext",
+    "declaration": true,
+    "declarationDir": "types",
+    "sourceMap": true,
+    "outDir": "dist",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true,
+    "emitDeclarationOnly": true,
+    "preserveConstEnums": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   }
 }
