@@ -48,8 +48,6 @@ For TypeScript projects, use `@iammattburns/eslint-config/typescript`.
 }
 ```
 
-TypeScript users will also need a `tsconfig.json` file in their project. An empty object (`{}`) or [my base](https://github.com/iammattburns/eslint-config/blob/main/tsconfig.json) will do!
-
 5. You can add two scripts to your package.json to lint and/or fix:
 
 ```json
@@ -60,6 +58,34 @@ TypeScript users will also need a `tsconfig.json` file in their project. An empt
 ```
 
 6. Now you can manually lint your code by running `npm run lint` and fix all fixable issues with `npm run lint:fix`. You probably want your editor to do this though.
+
+## TypeScript
+
+`tsconfig.json` allows extensions via the extends key, but doesn't support module resolution (i.e. a node module), thus making it quite restrictive when it comes to referencing the path to a parent config file. Paths specified must be relative or absolute, absolute paths being of no use to us in the context of a shared code base.
+
+Importing the shared config from `./node_modules/@iammattburns/eslint-config` is our only option.
+
+#### Single package repo
+
+To use this config, create an tsconfig.js file in the root of your repo and add:
+
+```
+{
+  "extends": "./node_modules/@iammattburns/eslint-config/tsconfig.json",
+  ...
+}
+```
+
+#### Mono repo
+
+To use this config, create an tsconfig.js file in the root of your specific package (e.g. ./packages/?) and add:
+
+```
+{
+  "extends": "../../node_modules/@iammattburns/eslint-config/tsconfig.json",
+  ...
+}
+```
 
 ## Settings
 
