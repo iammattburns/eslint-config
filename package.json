@@ -47,6 +47,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix",
     "bump:beta": "npm version prerelease --preid beta",
-    "publish:beta": "npm publish --tag beta"
+    "publish:beta": "npm publish --tag beta",
+    "release": "npm version patch --force && npm publish"
   }
 }
